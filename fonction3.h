@@ -2,6 +2,9 @@
 #define FONCTION1_H_
 
 
+
+
+
 typedef struct
 {
 SDL_Surface *im;
@@ -41,6 +44,8 @@ int frame;
 typedef struct 
 {
 SDL_Surface *im[2];
+SDL_Surface *im1[2];
+
 SDL_Surface *anime1;
 SDL_Surface *anime2;
 SDL_Rect rect1[4],rect2;
@@ -50,6 +55,15 @@ int i,pasavancement;
 int k;
 SDL_Surface *masque[2];
 int etat_anime;
+
+SDL_Rect position1,position2;//facultatif
+SDL_Rect camera1,camera2;
+
+int etatcamera1,etatcamera2;
+int gamemode;
+
+
+
 }background;
 
 typedef struct 
@@ -74,7 +88,24 @@ SDL_Rect rect;
 SDL_Rect camera;
 int redimensionnement;
 int k;
+//TTF_Font *font;
+
+
+
+
+
 }minimap;
+
+
+
+typedef struct
+{
+SDL_Surface *texte;
+int t;
+char temp[5];
+SDL_Rect rect1;
+
+}Time;
 
 
 typedef struct
@@ -97,8 +128,9 @@ int frame;
 typedef struct
 {
 
-SDL_Surface *im[3];
+SDL_Surface *im[6];
 int a;
+int niveau;
 
 }sousmenu;
 
@@ -110,7 +142,7 @@ int a;
 
 void animermenu(menu *m);
 void initmenu(menu *m);
-void  menucontrolmouse(SDL_Event event,menu *m);
+void menucontrolmouse(SDL_Event event,menu *m);
 void afficher(SDL_Surface *image,SDL_Surface *window);
 void menucontrolekeyboard(SDL_Event event ,menu *m);
 void settings(SDL_Surface *window,menu *m);
@@ -126,7 +158,7 @@ void initebackground(background *b);
 void animerbackground(background *b);
 void majminimap(minimap *m,int direction);
 void ennemi1(SDL_Rect *rect1);
-int collisionBB(personne p,ennemi e);
+int  collisionBB(personne p,ennemi e);
 void initminimap(minimap *m);
 void animerbackground2(background *b);
 void initennemie(ennemi *e);
@@ -137,14 +169,16 @@ void afficherbackground(background b,SDL_Surface *screen);
 void anime(SDL_Rect *rect);
 void saut(personne *p,SDL_Surface *screen ,background b);
 SDL_Color getpixel(SDL_Surface *surface ,int x, int y);
-int collisonparfaite(SDL_Surface *calque,personne p,background b);
+int  collisonparfaite(SDL_Surface *calque,personne p,background b);
 void jeu(SDL_Surface *window);
+void time1(Time *time,SDL_Surface *window);
 void clipsmenu(SDL_Rect *menu);
 void sous_menue(sousmenu *sm);
 void sousmenucontrolmouse(SDL_Event event ,sousmenu *sm);
-void gestionsousmenu(SDL_Surface *window,sousmenu *sm);
-
-
+void gestionsousmenu(SDL_Surface *window,sousmenu *sm,menu *m);
+void sousmenucontrolmouse1(SDL_Event event ,sousmenu *sm);
+void jeu1(SDL_Surface *window);
+void inittime(Time *time);
 
 
 

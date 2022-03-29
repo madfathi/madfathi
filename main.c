@@ -58,69 +58,27 @@ else
 f++;
 break;
 case SDL_MOUSEBUTTONUP:
-if(event.button.button == SDL_BUTTON_LEFT)
-{
+
 if(event.button.x>205 && event.button.x<412 && event.button.y >427 && event.button.y <465  )
 {
 settings(window,&m);
-
 }
+
+
 
 if(event.button.x>205 && event.button.x<430 && event.button.y >332 && event.button.y <363)
 {
-
-gestionsousmenu(window,&sm);
-
-
-/*while(continuer1==1)
-{
-SDL_PollEvent(&event1);
-switch(event1.type)
-{
-
-case SDL_MOUSEMOTION:
-sousmenucontrolmouse(event1,&sm);
-break;
-
-
-case SDL_MOUSEBUTTONUP:
-if(event1.button.button == SDL_BUTTON_LEFT)
-{
-
-if(event1.button.x>487 && event1.button.x<866 && event1.button.y >78 && event1.button.y <297 )
-{
-jeu(window);
-}
-
-if(event1.button.x>487 && event1.button.x<866 && event1.button.y >601 && event1.button.y <755 )
-{
-continuer1=0;
+gestionsousmenu(window,&sm,&m);
 break;
 }
 
 
-}
+
 break;
 
 
 
-}//fin switch2
 
-
-
-SDL_BlitSurface(sm.im[sm.a],NULL,window,NULL);
-SDL_Flip(window);
-
-
-}//fin while 2*/ 
-
-
-
-
-
-}
-}
-break;
 }
 
 
